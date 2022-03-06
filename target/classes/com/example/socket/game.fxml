@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.socket.ApplicationController">
+   <children>
+       <Pane fx:id="gamePane" layoutX="400.0" prefHeight="800.0" prefWidth="832.0">
+           <children>
+               <Circle fx:id="circle5" fill="#333333" layoutX="161.0" layoutY="556.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Circle fx:id="circle2" fill="#333333" layoutX="242.0" layoutY="380.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Circle fx:id="circle6" fill="#333333" layoutX="337.0" layoutY="556.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Circle fx:id="circle7" fill="#333333" layoutX="521.0" layoutY="558.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Circle fx:id="circle3" fill="#333333" layoutX="337.0" layoutY="380.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Circle fx:id="circle4" fill="#333333" layoutX="436.0" layoutY="381.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Circle fx:id="circle1" fill="#333333" layoutX="338.0" layoutY="196.0" onMouseClicked="#onCellClicked" radius="27.0" stroke="#333333" strokeType="INSIDE" />
+               <Line endX="-37.0" endY="-139.0" fill="#333333" layoutX="279.0" layoutY="519.0" startX="-118.0" startY="37.0" stroke="#333333" />
+               <Line endX="-18.0" endY="-155.0" fill="#333333" layoutX="356.0" layoutY="351.0" startX="-114.0" startY="29.0" stroke="#333333" />
+               <Line endX="14.0" endY="86.5" fill="#333333" layoutX="420.0" layoutY="295.0" startX="-82.0" startY="-99.0" stroke="#333333" />
+               <Line endX="3.0" endY="84.0" fill="#333333" layoutX="518.0" layoutY="474.0" startX="-83.0" startY="-92.5" stroke="#333333" />
+               <Line endX="75.0" fill="#333333" layoutX="262.0" layoutY="556.0" startX="-100.0" stroke="#333333" />
+               <Line endX="63.0" fill="#333333" layoutX="458.0" layoutY="558.0" startX="-121.0" startY="-2.0" stroke="#333333" />
+               <Line endX="-12.0" fill="#333333" layoutX="351.0" layoutY="382.0" startX="-100.0" stroke="#333333" />
+               <Line endX="-12.0" fill="#333333" layoutX="457.0" layoutY="381.0" startX="-100.0" stroke="#333333" />
+               <Line endX="-17.5" endY="-87.5" fill="#333333" layoutX="357.0" layoutY="470.0" startX="-17.5" startY="88.70709228515625" stroke="#333333" />
+               <Line endX="-19.7071533203125" endY="-97.70709228515625" fill="#333333" layoutX="357.0" layoutY="293.0" startX="-17.5" startY="88.70709228515625" stroke="#333333" />
+               <Label fx:id="turnLabel" alignment="CENTER" layoutX="153.0" layoutY="34.0" prefHeight="35.0" prefWidth="374.0" style="-fx-background-color: #333333;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Label>
+           </children>
+       </Pane>
+      <Pane layoutY="-2.0" prefHeight="708.0" prefWidth="426.0">
+         <children>
+                <Button layoutX="357.0" layoutY="661.0" onAction="#onSendMessage" prefHeight="25.0" prefWidth="57.0" text="Send" />
+                <TextField fx:id="inputMessage" layoutX="81.0" layoutY="660.0" onAction="#onSendMessage" prefHeight="26" prefWidth="262.0" />
+                <ScrollPane fx:id="scrollPaneChat" fitToWidth="true" layoutX="80.0" layoutY="13.0" prefHeight="638.0" prefWidth="335.0">
+                    <content>
+                        <VBox fx:id="vBoxMessages" prefHeight="579.0" prefWidth="403.0" />
+                    </content>
+                </ScrollPane>
+            <VBox prefHeight="702.0" prefWidth="68.0" style="-fx-background-color: #333;">
+                <children>
+                    <Pane prefHeight="702.0" prefWidth="75.0">
+                        <children>
+                            <Button layoutX="4.0" layoutY="292.0" mnemonicParsing="false" onMouseClicked="#onGiveUp" prefHeight="49.0" prefWidth="60.0" style="-fx-background-color: #888;" text="Give up" textFill="WHITE">
+                                <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                </font>
+                            </Button>
+                            <Button layoutX="4.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#onAskToDraw" prefHeight="47.0" prefWidth="60.0" style="-fx-background-color: #888;" text="Draw" textFill="WHITE">
+                                <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                </font>
+                            </Button>
+                        </children>
+                    </Pane>
+                </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</Pane>
