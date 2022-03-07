@@ -31,6 +31,13 @@
                        <Font size="24.0" />
                    </font>
                </Label>
+            <Label fx:id="drawLabel" alignment="CENTER" layoutX="135.0" layoutY="87.0" opacity="0.0" prefHeight="31.0" prefWidth="410.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Black" size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="drawButton" layoutX="263.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#confirmDraw" opacity="0.0" text="Confirm?" />
+            <Button fx:id="cancelDrawButton" layoutX="349.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#onCancelDraw" opacity="0.0" text="Cancel" />
            </children>
        </Pane>
       <Pane layoutY="-2.0" prefHeight="708.0" prefWidth="426.0">

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -58,6 +59,15 @@ public class ApplicationController implements Initializable {
 
     @FXML
     private Label turnLabel;
+
+    @FXML
+    private  Label drawLabel;
+
+    @FXML
+    private Button drawButton;
+
+    @FXML
+    private Button cancelDrawButton;
 
     @FXML
     public void onSendMessage (ActionEvent event) {
@@ -280,9 +290,6 @@ public class ApplicationController implements Initializable {
                 System.out.println("Text type");
                 addLabel(messageContent, vBoxMessages);
                 break;
-            case "ST":
-                System.out.println("Start type");
-                break;
             case "CF":
                 boolean isFirst = messageContent.equals("true");
                 isTurn = isFirst;
@@ -291,9 +298,6 @@ public class ApplicationController implements Initializable {
                 setTurnLabelText(isFirst);
                 System.out.println(isFirst);
                 System.out.println("Config type");
-                break;
-            case "CL":
-                System.out.println("Close type");
                 break;
             case "GU":
                 System.out.println("GiveUp type");
@@ -307,6 +311,22 @@ public class ApplicationController implements Initializable {
                 break;
             case "DR":
                 System.out.println("Draw type");
+
+                if(messageContent.equals("ask")) {
+                    System.out.println("user is asking to draw game");
+                    Platform.runLater(() -> {
+                        drawLabel.setText("user is asking to draw");
+                        drawLabel.setOpacity(1);
+                        drawButton.setOpacity(1);
+                        cancelDrawButton.setOpacity(1);
+                    });
+                }else {
+                    System.out.println("draw game");
+                    isTurn = false;
+                    Platform.runLater(() -> {
+                        turnLabel.setText("draw game!");
+                    });
+                }
                 break;
             case "WI":
                 isTurn = false;
@@ -474,8 +494,32 @@ public class ApplicationController implements Initializable {
 
     @FXML
     private void onAskToDraw(MouseEvent event) {
-        socketClient.sendMessage("DR:");
+        socketClient.sendMessage("DR:ask");
         System.out.println("user is trying to draw game!");
+    }
+
+    @FXML
+    private void confirmDraw(MouseEvent event) {
+        System.out.println("you confirmed draw game!");
+        isTurn = false;
+        socketClient.sendMessage("DR:confirm");
+        Platform.runLater(() -> {
+            turnLabel.setText("draw game!");
+            drawLabel.setOpacity(0);
+            drawButton.setOpacity(0);
+            cancelDrawButton.setOpacity(0);
+        });
+
+    }
+
+    @FXML
+    private void onCancelDraw(MouseEvent event) {
+        System.out.println("you refused draw game");
+        Platform.runLater(() -> {
+            drawLabel.setOpacity(0);
+            drawButton.setOpacity(0);
+            cancelDrawButton.setOpacity(0);
+        });
     }
 
 }
